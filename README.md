@@ -25,7 +25,9 @@ Ferramenta de Desenvolvimento: MySQL Workbench / DBeaver / Outro cliente SQL
 Versionamento: Git e GitHub
 -----
 📂 Estrutura do Repositório
-O repositório contém os seguintes arquivos SQL, que formam a base de dados da livraria:
+
+------
+***O repositório contém os seguintes arquivos SQL, que formam a base de dados da livraria:
 Arquivo SQL,Conteúdo,Observação
 livraria_saber_**schema_full**.sql,Script completo de criação do DB e tabelas.,Contém todos os CREATE TABLE e INSERT iniciais.
 livraria_saber_**autor**.sql,CREATE TABLE e INSERT para a tabela autor.,
@@ -37,7 +39,7 @@ livraria_saber_**papelaria**.sql,CREATE TABLE e INSERT para a tabela papelaria.,
 livraria_saber_**vendedor**.sql,CREATE TABLE e INSERT para a tabela vendedor.,Necessário criar/incluir.
 livraria_saber_**venda**.sql,CREATE TABLE e INSERT para a tabela venda.,Depende de cliente e vendedor.
 livraria_saber_**item_venda**.sql,CREATE TABLE e INSERT para a tabela item_venda.,"Depende de venda, livro e papelaria."
-livraria_saber_**dml_exemplos**.sql,Script de manipulação de dados (DML).,"Contém SELECT, UPDATE e DELETE solicitados."
+livraria_saber_**dml_exemplos**.sql,Script de manipulação de dados (DML).,"Contém SELECT, UPDATE e DELETE solicitados."***
 
 ----
 
@@ -55,26 +57,17 @@ USE livraria_saber;
 
 Criação e População de Tabelas (DDL e DML - INSERT):
 
-Execute o script principal (livraria_saber_schema_full.sql - assumindo que você combinou todos os CREATE TABLE e INSERT iniciais em um único arquivo, se não, execute-os na ordem de dependência) ou execute os arquivos individuais na seguinte ordem para respeitar as chaves estrangeiras:
+***Execute o script principal (livraria_saber_schema_full.sql - assumindo que você combinou todos os CREATE TABLE e INSERT iniciais em um único arquivo, se não, execute-os na ordem de dependência) ou execute os arquivos individuais na seguinte ordem para respeitar as chaves estrangeiras:***
 
 autor.sql
-
 cliente.sql
-
 editora.sql
-
 fornecedor.sql
-
 vendedor.sql (Necessário script!)
-
 livro.sql (Depende de editora)
-
 papelaria.sql (Depende de fornecedor)
-
 livro_autor.sql (Depende de livro e autor)
-
 venda.sql (Depende de cliente e vendedor)
-
 item_venda.sql (Depende de venda, livro e papelaria)
 
 Manipulação de Dados (DML - Consultas/Atualizações/Exclusões):
@@ -131,7 +124,7 @@ WHERE categoria = 'Escolar' AND quantidade_estoque < 100
 ORDER BY preco DESC;
 
 ---------
-✍️ Atualização de Dados (UPDATE)
+✍️ **Atualização de Dados (UPDATE)**
 Atualizações que alteram o estado de colunas específicas.
 
 -- 1. Aumentar o preço do livro "O Enigma do Tempo" (id_livro = 1) em 10%.
@@ -150,7 +143,7 @@ SET quantidade_estoque = quantidade_estoque + 50
 WHERE marca = '3M';
 
 ----------------
-🗑️ Exclusão de Dados (DELETE)
+🗑️ **Exclusão de Dados (DELETE)**
 Exclusões que respeitam a integridade referencial (FOREIGN KEY).
 
 -- 1. Deletar a Caneta Gel Azul (id_papelaria = 2), pois não está relacionada a nenhum item de venda com ON DELETE RESTRICT (Verificar a FK, se for RESTRICT, terá que deletar item_venda primeiro).
